@@ -1,18 +1,42 @@
 {
-  // https://nuxt.com/docs/guide/concepts/typescript
-  "files": [],
+  "compilerOptions": {
+    "useDefineForClassFields": true,
+    "strict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "useUnknownInCatchVariables": true,
+    "declaration": true,
+    "declarationDir": "lib",
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
+    "esModuleInterop": false,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": false,
+    "strictBuiltinIteratorReturn": true,
+    "noUncheckedSideEffectImports": true
+  },
   "references": [
     {
-      "path": "./.nuxt/tsconfig.app.json"
+      "path": "./.nuxt/tsconfig.json"
     },
     {
       "path": "./.nuxt/tsconfig.server.json"
-    },
-    {
-      "path": "./.nuxt/tsconfig.shared.json"
-    },
-    {
-      "path": "./.nuxt/tsconfig.node.json"
     }
-  ]
+  ],
+  "files": []
 }
