@@ -1,4 +1,5 @@
 @import './reset.css';
+@import './variables.css';
 
 @font-face {
   font-family: 'PTRootUIWebVF';
@@ -12,6 +13,7 @@
 
 body {
   font-family: 'PTRootUIWebVF', sans-serif;
+  color: var(--text-primary);
 }
 
 * {
