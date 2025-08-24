@@ -14,27 +14,23 @@ const { filters: baseFilters } = defineProps<Props>()
 const {
   filters,
   setSpecificFilter,
-  setMaxFilter,
-  setMinFilter,
+  setRangeFilter,
   resetFilters,
 } = useApartmentFiltersStore()
 
 const priceRange = ref()
 const squareRange = ref()
 
-const setPriceDebounced = debounce((value) => {
-  const [from, to] = value
+function createRangeSetter(field: 'price' | 'square') {
+  return debounce((value: number[]) => {
+    const [from, to] = value
 
-  setMinFilter('price', from)
-  setMaxFilter('price', to)
-}, 700)
+    setRangeFilter(field, [from, to])
+  }, 700)
+}
 
-const setSquareDebounced = debounce((value) => {
-  const [from, to] = value
-
-  setMinFilter('square', from)
-  setMaxFilter('square', to)
-}, 700)
+const setPriceDebounced = createRangeSetter('price')
+const setSquareDebounced = createRangeSetter('square')
 
 function onResetClick() {
   resetFilters()
