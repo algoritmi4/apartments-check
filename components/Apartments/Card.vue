@@ -8,12 +8,8 @@ interface Props {
 
 const { apartment } = defineProps<Props>()
 
-const square = computed(() => {
-  return String(apartment.square).replace('.', ',')
-})
-const price = computed(() => {
-  return formatNumberIntl(apartment.price)
-})
+const square = computed(() => String(apartment.square).replace('.', ','))
+const price = computed(() => formatNumberIntl(apartment.price))
 </script>
 
 <template>

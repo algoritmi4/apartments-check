@@ -16,17 +16,13 @@ const sortVariants = ['abs', 'desc', undefined] as const
 const currentSort = ref(filters.value[`${sorter.sortName}Sort`])
 
 function onSorterClick() {
-  let sortIndex = sortVariants.indexOf(currentSort.value)
+  const sortIndex = sortVariants.indexOf(currentSort.value)
+  const isLast = sortIndex === sortVariants.length - 1
 
-  if (sortIndex === sortVariants.length - 1) {
-    sortIndex = 0
-  }
-  else {
-    sortIndex += 1
-  }
+  const newSortIndex = isLast ? 0 : sortIndex + 1
 
-  currentSort.value = sortVariants[sortIndex]
-  filtersStore.setSortFilter(sorter.sortName, sortVariants[sortIndex])
+  currentSort.value = sortVariants[newSortIndex]
+  filtersStore.setSortFilter(sorter.sortName, sortVariants[newSortIndex])
 }
 
 watch(filters.value, () => {
