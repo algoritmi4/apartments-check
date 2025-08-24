@@ -1,4 +1,5 @@
 import type { ApartmentsQuery, ApartmentsResponse } from '~/server/api/apartments'
+import type { FiltersResponse } from '~/server/api/filters'
 
 export default defineNuxtPlugin(() => {
   const api = {
@@ -11,6 +12,9 @@ export default defineNuxtPlugin(() => {
       })
 
       return await $fetch<ApartmentsResponse>(`/api/apartments?${params.toString()}`)
+    },
+    async getFilters() {
+      return await $fetch<FiltersResponse>('/api/filters')
     },
   }
 
