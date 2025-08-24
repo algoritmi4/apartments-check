@@ -129,10 +129,10 @@ function onResetClick() {
     align-items: center;
     gap: 8px;
     margin-left: 16px;
-    transition: opacity 0.3s linear;
+    transition: var(--transition-default);
 
     &:hover {
-      opacity: 0.7;
+      opacity: var(--hover-opacity-default);
     }
 
     &-icon {

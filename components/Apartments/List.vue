@@ -139,11 +139,11 @@ watch(filters, reset, { deep: true })
     border-radius: 25px;
     padding: 8px 24px;
     cursor: pointer;
-    transition: opacity 0.3s linear;
+    transition: var(--transition-default);
     margin-top: 24px;
 
     &:hover {
-      opacity: 0.7;
+      opacity: var(--hover-opacity-default);
     }
   }
 }

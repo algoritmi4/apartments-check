@@ -8,4 +8,6 @@
   --border-secondary: #0B173933;
   --shadow-primary: 0px 6px 20px 0px #95D0A1;
   --shadow-secondary: 0px 1px 0px 0px #0000001A;
+  --transition-default: opacity 0.15s linear;
+  --hover-opacity-default: 0.7;
 }

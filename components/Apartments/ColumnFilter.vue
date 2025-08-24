@@ -59,9 +59,14 @@ watch(filters.value, () => {
   align-items: center;
   margin-left: 20px;
   cursor: pointer;
+  transition: var(--transition-default);
 
   &:first-child {
     margin-left: 0;
+  }
+
+  &:hover {
+    opacity: var(--hover-opacity-default);
   }
 
   &__text {

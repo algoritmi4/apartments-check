@@ -33,10 +33,10 @@ function scrollToTop() {
   z-index: 1;
   border-radius: 50%;
   background: var(--dark-green);
-  transition: opacity 0.15s linear;
+  transition: var(--transition-default);
 
   &:hover {
-    opacity: 0.7;
+    opacity: var(--hover-opacity-default);
   }
 
   &__icon {
