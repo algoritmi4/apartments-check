@@ -31,6 +31,7 @@ function onError() {
 const {
   items,
   isLoading,
+  isFetching,
   hasMore,
   loadMore,
   reset,
@@ -78,7 +79,7 @@ watch(filters, reset, { deep: true })
       v-if="hasMore"
       type="button"
       class="apartments-list__button"
-      :class="{ 'apartments-list__button_disabled': isLoading }"
+      :class="{ 'apartments-list__button_disabled': isLoading || isFetching }"
       :disabled="isLoading"
       @click="loadMore"
     >
@@ -144,6 +145,11 @@ watch(filters, reset, { deep: true })
 
     &:hover {
       opacity: var(--hover-opacity-default);
+    }
+
+    &_disabled {
+      opacity: var(--hover-opacity-default);
+      cursor: default;
     }
   }
 }
