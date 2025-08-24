@@ -41,20 +41,23 @@ function onResetClick() {
 
 <template>
   <div class="filters">
-    <div class="filters__rooms">
-      <button
+    <ul class="filters__rooms">
+      <li
         v-for="room in ROOMS_FILTER_DATA"
         :key="room.id"
-        type="button"
-        class="filters__rooms-button"
-        :class="{ 'filters__rooms-button_active': filters.rooms === room.value }"
-        @click="setSpecificFilter('rooms', room.value)"
       >
-        <p class="filters__rooms-button-text">
+        <button
+          type="button"
+          class="filters__rooms-button"
+          :class="{ 'filters__rooms-button_active': filters.rooms === room.value }"
+          :aria-pressed="filters.rooms === room.value"
+          :aria-label="`Filter by ${room.text} rooms`"
+          @click="setSpecificFilter('rooms', room.value)"
+        >
           {{ room.text }}
-        </p>
-      </button>
-    </div>
+        </button>
+      </li>
+    </ul>
     <TitledRange
       ref="priceRange"
       title="Стоимость квартиры, ₽"
@@ -69,11 +72,16 @@ function onResetClick() {
       :step="1"
       @update:model="setSquareDebounced"
     />
-    <button type="button" class="filters__reset" @click="onResetClick">
-      <p class="filters__reset-text">
+    <button
+      type="button"
+      class="filters__reset"
+      aria-label="Reset all filters"
+      @click="onResetClick"
+    >
+      <span class="filters__reset-text">
         Сбросить фильтры
-      </p>
-      <CloseCross class="filters__reset-icon" />
+      </span>
+      <CloseCross class="filters__reset-icon" aria-hidden="true" />
     </button>
   </div>
 </template>
@@ -100,10 +108,18 @@ function onResetClick() {
       border-radius: 50%;
       padding: 10px 12px;
       background-color: var(--primary);
+      font-size: 16px;
+      line-height: 1.5;
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      &-text {
-        font-size: 16px;
-        line-height: 1.5;
+      &:focus {
+        background-color: var(--dark-green);
+        color: var(--primary);
+        box-shadow: var(--shadow-primary);
       }
 
       &:hover {
@@ -121,11 +137,13 @@ function onResetClick() {
   }
 
   &__reset {
+    width: fit-content;
     display: flex;
     align-items: center;
     gap: 8px;
     margin-left: 16px;
     transition: var(--transition-default);
+    cursor: pointer;
 
     &:hover {
       opacity: var(--hover-opacity-default);

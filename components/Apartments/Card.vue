@@ -13,28 +13,32 @@ const price = computed(() => formatNumberIntl(apartment.price))
 </script>
 
 <template>
-  <div class="apartments-card">
+  <article class="apartments-card">
     <div class="apartments-card__info">
       <h3 class="apartments-card__title">
         {{ `${apartment.rooms}-комнатная №${apartment.id}` }}
       </h3>
-      <div class="apartments-card__description">
-        <p class="apartments-card__description-text">
-          {{ square }}<span class="screen-max-l"> м²</span>
-        </p>
-        <p class="apartments-card__description-text">
+      <ul class="apartments-card__description">
+        <li class="apartments-card__description-text">
+          {{ square }}<span aria-hidden="true" class="screen-max-l"> м²</span>
+        </li>
+        <li class="apartments-card__description-text">
           {{ apartment.floors.current }}
           <span class="apartments-card__description-text_gray">
-            {{ `из ${apartment.floors.total}` }}<span class="screen-max-l"> этажей</span>
+            {{ `из ${apartment.floors.total}` }}<span aria-hidden="true" class="screen-max-l"> этажей</span>
           </span>
-        </p>
-        <p class="apartments-card__description-text">
-          {{ price }}<span class="screen-max-l"> ₽</span>
-        </p>
-      </div>
+        </li>
+        <li class="apartments-card__description-text">
+          {{ price }}<span aria-hidden="true" class="screen-max-l"> ₽</span>
+        </li>
+      </ul>
     </div>
-    <img class="apartments-card__image" src="/assets/images/room.png" alt="apartment">
-  </div>
+    <img
+      class="apartments-card__image"
+      src="/assets/images/room.png"
+      :alt="`Фото ${apartment.rooms}-комнатной квартиры №${apartment.id}`"
+    >
+  </article>
 </template>
 
 <style lang="scss" scoped>
@@ -59,6 +63,7 @@ const price = computed(() => formatNumberIntl(apartment.price))
   &__description {
     display: flex;
     gap: 20px;
+    list-style: none;
 
     &-text {
       &_gray {

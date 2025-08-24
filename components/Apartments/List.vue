@@ -64,15 +64,21 @@ watch(filters, reset, { deep: true })
           Квартира
         </p>
       </div>
-      <ColumnFilter v-for="sorter in SORTERS_DATA" :key="sorter.id" :sorter="sorter" />
+      <ColumnFilter
+        v-for="(sorter, index) in SORTERS_DATA"
+        :key="sorter.id"
+        class="apartments-list__sorter"
+        :class="{ 'apartments-list__sorter_first': index === 0 }"
+        :sorter="sorter"
+      />
     </div>
-    <div v-if="isLoading" class="apartments-list__load">
+    <div v-if="isLoading" class="apartments-list__load" role="status" aria-live="polite">
       <Loader />
     </div>
     <div v-else-if="allItems.length" class="apartments-list__cards">
       <ApartmentsCard v-for="apartment in allItems" :key="apartment.id" :apartment="apartment" />
     </div>
-    <div v-else class="apartments-list__empty">
+    <div v-else class="apartments-list__empty" role="status" aria-live="polite">
       Не найдено
     </div>
     <button
@@ -81,6 +87,7 @@ watch(filters, reset, { deep: true })
       class="apartments-list__button"
       :class="{ 'apartments-list__button_disabled': isLoading || isFetching }"
       :disabled="isLoading"
+      aria-label="Загрузить больше квартир"
       @click="loadMore"
     >
       Загрузить еще
@@ -100,6 +107,10 @@ watch(filters, reset, { deep: true })
     width: 100%;
     display: flex;
     padding: 8px 0;
+  }
+
+  &__sorter {
+    margin-left: 20px;
   }
 
   &__title {
@@ -164,6 +175,12 @@ watch(filters, reset, { deep: true })
       display: flex;
       padding: 0 0 16px;
       box-shadow: var(--shadow-secondary);
+    }
+
+    &__sorter {
+      &_first {
+        margin-left: 20px;
+      }
     }
 
     &__title {

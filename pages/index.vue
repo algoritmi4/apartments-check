@@ -22,11 +22,11 @@ if (filtersStatus.value === 'error' || apartmentsStatus.value === 'error') {
 </script>
 
 <template>
-  <div class="main-page">
+  <main class="main-page">
     <ApartmentsBlock v-if="apartments" :apartments="apartments.items" />
     <Filters v-if="filters" :filters="filters.filters" />
     <UpScrollArrow />
-  </div>
+  </main>
 </template>
 
 <style scoped>

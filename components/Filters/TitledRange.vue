@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineExpose, useId } from 'vue'
+import { useId } from 'vue'
 
 interface Props {
   title: string
@@ -34,16 +34,16 @@ watch(model, (newVal) => {
 </script>
 
 <template>
-  <div class="titled-range">
-    <h2 class="titled-range__title">
+  <fieldset class="titled-range">
+    <legend class="titled-range__title">
       {{ title }}
-    </h2>
+    </legend>
     <div class="titled-range__inputs">
       <div class="titled-range__input-box">
-        <label :for="fromId" class="titled-range__input">
-          <div class="titled-range__input-pre">
+        <label :for="fromId" class="titled-range__input" :aria-label="`От ${from}`">
+          <span class="titled-range__input-pre">
             от
-          </div>
+          </span>
           <input
             :id="fromId"
             v-model="model[0]"
@@ -54,10 +54,10 @@ watch(model, (newVal) => {
         </label>
       </div>
       <div class="titled-range__input-box">
-        <label :for="toId" class="titled-range__input">
-          <div class="titled-range__input-pre">
+        <label :for="toId" class="titled-range__input" :aria-label="`До ${from}`">
+          <span class="titled-range__input-pre">
             до
-          </div>
+          </span>
           <input
             :id="toId"
             v-model="model[1]"
@@ -79,8 +79,11 @@ watch(model, (newVal) => {
       :min="from"
       hide-details
       strict
+      :aria-label="title"
+      :aria-valuemin="from"
+      :aria-valuemax="to"
     />
-  </div>
+  </fieldset>
 </template>
 
 <style lang="scss" scoped>
