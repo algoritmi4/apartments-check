@@ -6,7 +6,7 @@ type SortableFields = 'price' | 'floor' | 'square'
 type RangedFields = 'price' | 'square'
 type SpecificFields = 'rooms'
 
-export const useCounterStore = defineStore('counter', () => {
+export const useApartmentFiltersStore = defineStore('apartmentFilters', () => {
   const filters: ApartmentsQuery = {}
 
   const setSortFilter = (field: SortableFields, value: SortParam) => {
