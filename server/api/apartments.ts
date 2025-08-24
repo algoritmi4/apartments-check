@@ -27,7 +27,6 @@ export default defineEventHandler(async (event) => {
   const offset = (page - 1) * limit
 
   let results = apartments
-  const total = results.length
 
   if (query.priceMin) {
     results = results.filter((item: Apartment) => item.price >= Number(query.priceMin))
@@ -78,6 +77,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const paginated = results.slice(offset, offset + limit)
+  const total = results.length
 
   return {
     page,
