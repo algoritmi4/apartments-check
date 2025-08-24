@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 
 type SortableFields = 'price' | 'floor' | 'square'
 type RangedFields = 'price' | 'square'
-type SpecificFields = 'floor' | 'rooms'
+type SpecificFields = 'rooms'
 
 export const useCounterStore = defineStore('counter', () => {
   const filters: ApartmentsQuery = {}
@@ -25,5 +25,13 @@ export const useCounterStore = defineStore('counter', () => {
     filters[field] = value
   }
 
-  return { filters, setSortFilter, setMinFilter, setMaxFilter, setSpecificFilter }
+  const resetFilters = () => {
+    filters.priceMin = undefined
+    filters.priceMax = undefined
+    filters.squareMin = undefined
+    filters.squareMax = undefined
+    filters.rooms = undefined
+  }
+
+  return { filters, setSortFilter, setMinFilter, setMaxFilter, setSpecificFilter, resetFilters }
 })

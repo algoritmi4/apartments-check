@@ -11,7 +11,6 @@ export interface ApartmentsQuery {
   priceMin?: number
   priceMax?: number
   rooms?: number
-  floor?: number
   floorSort?: SortParam
   squareSort?: SortParam
   squareMin?: number
@@ -39,9 +38,6 @@ export default defineEventHandler(async (event) => {
 
   if (query.rooms) {
     results = results.filter((item: Apartment) => item.rooms === Number(query.rooms))
-  }
-  if (query.floor) {
-    results = results.filter((item: Apartment) => item.floors.current === Number(query.floor))
   }
 
   if (query.squareMin) {
