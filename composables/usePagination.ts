@@ -14,6 +14,7 @@ export function usePagination<T>(options: PaginationOptions<T>) {
   const page = ref(1)
   const isLoading = ref(false)
   const hasMore = ref(true)
+  const isReseted = ref(false)
 
   async function loadMore() {
     if (isLoading.value || !hasMore.value)
@@ -24,7 +25,7 @@ export function usePagination<T>(options: PaginationOptions<T>) {
     try {
       const data = await onUpdate(page.value, pageSize)
 
-      if (data.total <= data.items.length) {
+      if (data.total <= items.value.length + data.items.length) {
         hasMore.value = false
       }
 
@@ -39,11 +40,22 @@ export function usePagination<T>(options: PaginationOptions<T>) {
     }
   }
 
+  async function reset() {
+    items.value = []
+    page.value = 1
+    hasMore.value = true
+    isReseted.value = true
+
+    loadMore()
+  }
+
   return {
     items,
     isLoading,
+    isReseted,
     hasMore,
     loadMore,
+    reset,
     page,
   }
 }
