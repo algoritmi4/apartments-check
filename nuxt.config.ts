@@ -18,6 +18,9 @@ export default defineNuxtConfig({
       standalone: false,
     },
   },
+  nitro: {
+    preset: 'netlify',
+  },
 
   css: ['~/assets/css/main.css'],
   build: {
