@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import Filters from '~/components/Filters/Filters.vue'
 import ApartmentsBlock from '../components/Apartments/Block.vue'
+import UpScrollArrow from '../components/UpScrollArrow.vue'
 
 const { $api } = useNuxtApp()
 
@@ -24,6 +25,7 @@ if (filtersStatus.value === 'error' || apartmentsStatus.value === 'error') {
   <div class="main-page">
     <ApartmentsBlock v-if="apartments" :apartments="apartments.items" />
     <Filters v-if="filters" :filters="filters.filters" />
+    <UpScrollArrow />
   </div>
 </template>
 
@@ -32,5 +34,7 @@ if (filtersStatus.value === 'error' || apartmentsStatus.value === 'error') {
   width: 100%;
   display: flex;
   padding: 48px 54px;
+  min-height: 100vh;
+  position: relative;
 }
 </style>
