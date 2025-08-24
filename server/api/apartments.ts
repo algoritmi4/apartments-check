@@ -1,5 +1,5 @@
 import type { Apartment } from '~/dataBase/db'
-import type { PaginatedResponse } from '~/types/api'
+import type { PaginatedResponse, SortParam } from '~/types/api'
 import { apartments } from '~/dataBase/db'
 
 export type ApartmentsResponse = PaginatedResponse<Apartment>
@@ -7,13 +7,13 @@ export type ApartmentsResponse = PaginatedResponse<Apartment>
 export interface ApartmentsQuery {
   page?: number
   limit?: number
-  priceSort?: 'abs' | 'desc'
+  priceSort?: SortParam
   priceMin?: number
   priceMax?: number
   rooms?: number
   floor?: number
-  floorSort?: 'abs' | 'desc'
-  squareSort?: 'abs' | 'desc'
+  floorSort?: SortParam
+  squareSort?: SortParam
   squareMin?: number
   squareMax?: number
 }

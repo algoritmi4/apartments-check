@@ -4,3 +4,5 @@ export interface PaginatedResponse<T> {
   total: number
   items: T[]
 }
+
+export type SortParam = 'abs' | 'desc'
