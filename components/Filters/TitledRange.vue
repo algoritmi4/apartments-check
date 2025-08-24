@@ -73,16 +73,52 @@ watch(model, (newVal) => {
       thumb-color="var(--dark-green)"
       track-color="var(--border-primary)"
       track-fill-color="var(--dark-green)"
+      class="titled-range__slider"
       :step="step"
       :max="to"
       :min="from"
+      hide-details
       strict
     />
   </div>
 </template>
 
 <style lang="scss" scoped>
-.slider {
-  color: green;
+.titled-range {
+  display: flex;
+  flex-direction: column;
+
+  &__inputs {
+    display: flex;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  &__input-box {
+    width: 50%;
+  }
+
+  &__input {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    cursor: pointer;
+
+    &-pre {
+      color: var(--text-gray);
+    }
+
+    &-input {
+      width: 80%;
+      outline: none;
+      appearance: none;
+      font-weight: 500;
+    }
+  }
+
+  &__slider {
+    // important for rewrite vuetify styles
+    margin-inline: 0 !important;
+  }
 }
 </style>

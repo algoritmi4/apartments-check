@@ -57,15 +57,16 @@ watch(filters.value, () => {
   display: flex;
   gap: 8px;
   align-items: center;
-  margin-right: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+
+  &:first-child {
+    margin-left: 0;
+  }
 
   &__text {
     font-size: 14px;
     line-height: 1.5;
-
-    &-sorter {
-      cursor: pointer;
-    }
 
     &_colored {
       color: var(--dark-green);
@@ -84,6 +85,37 @@ watch(filters.value, () => {
 
     &_reverse {
       transform: rotate(180deg);
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .sorter {
+    width: 100%;
+    max-width: 120px;
+
+    &__text {
+      font-size: 14px;
+      line-height: 1.5;
+
+      &_colored {
+        color: var(--dark-green);
+      }
+    }
+
+    &__arrows {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    &__arrow {
+      width: 7px;
+      height: 4px;
+
+      &_reverse {
+        transform: rotate(180deg);
+      }
     }
   }
 }

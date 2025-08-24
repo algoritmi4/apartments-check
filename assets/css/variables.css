@@ -1,8 +1,11 @@
 :root {
   --primary: #fff;
   --text-primary: #0B1739;
-  --gradient-green: linear-gradient(#AEE4B2 0%, #95D0A1 100%);
+  --text-gray: #00000080;
+  --gradient-green: linear-gradient(135deg, rgba(174, 228, 178, 0.3) 0%, rgba(149, 208, 161, 0.3) 100%);
   --dark-green: #3EB57C;
   --border-primary: #0000001A;
   --border-secondary: #0B173933;
+  --shadow-primary: 0px 6px 20px 0px #95D0A1;
+  --shadow-secondary: 0px 1px 0px 0px #0000001A;
 }

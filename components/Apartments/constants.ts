@@ -9,8 +9,8 @@ export interface SorterData {
 export const SORTERS_DATA: SorterData[] = [
   {
     id: 0,
-    text: 'Цена, ₽',
-    sortName: 'price',
+    text: 'S, м²',
+    sortName: 'square',
   },
   {
     id: 1,
@@ -19,7 +19,7 @@ export const SORTERS_DATA: SorterData[] = [
   },
   {
     id: 2,
-    text: 'S, м²',
-    sortName: 'square',
+    text: 'Цена, ₽',
+    sortName: 'price',
   },
 ]
