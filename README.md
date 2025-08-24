@@ -1,75 +1,72 @@
-# Nuxt Minimal Starter
+# Apartments Listing Project
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+![Apartments Demo](https://apartments-check.netlify.app/)
 
-## Setup
+A modern apartments listing web application with advanced search filters and sorting options.
 
-Make sure to install dependencies:
+## 🔗 Live Demo
+
+[https://apartments-check.netlify.app/](https://apartments-check.netlify.app/)
+
+## 🛠 Tech Stack
+
+* **Vue 3** - Frontend framework
+* **Nuxt 3** - Server-side rendering and routing
+* **Pinia** - State management
+* **Vuetify** - UI components and styling
+* **Vite** - Fast build and development
+
+## 🚀 Features
+
+* Browse a list of apartments
+* Search and filter by:
+
+  * Price range
+  * Square meters range
+  * Number of rooms
+* Sort apartments by:
+
+  * Price
+  * Floor
+  * Square meters
+* Infinite scroll / pagination
+* Responsive design(900px+)
+
+## 💻 Local Setup
+
+Follow these steps to run the project locally:
+
+### 1. Clone the repository
 
 ```bash
-# npm
+git clone git@github.com:algoritmi4/apartments-check.git
+cd apartments-check
+```
+
+### 2. Install dependencies(Node must be installed - https://nodejs.org/en)
+
+```bash
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+### 3. Run the development server
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+* The app will be available at `http://localhost:3000`
 
-Build the application for production:
+### 4. Build for production
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+## 📌 Notes
 
-```bash
-# npm
-npm run preview
+* The project uses a mocked database (`db.json`) to simulate apartment listings.
+* Filters and sorting are applied on the server-side API emulation for SSR compatibility.
 
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 📝 License
+MIT License
