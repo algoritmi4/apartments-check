@@ -6,7 +6,7 @@ const { $api } = useNuxtApp()
 
 const filtersPromise = useAsyncData('filters', () => $api.getFilters())
 const apartmentsPromise = useAsyncData('apartments', () => $api.getApartments({
-  page: 1,
+  offset: 0,
   limit: 5,
 }))
 

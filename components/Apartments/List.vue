@@ -13,11 +13,18 @@ const { $api } = useNuxtApp()
 const apartmentFiltersStore = useApartmentFiltersStore()
 const { filters } = storeToRefs(apartmentFiltersStore)
 
-async function getApartments(page: number, limit: number) {
+async function getApartments(offset: number, limit: number) {
   return $api.getApartments({
-    page,
+    offset,
     limit,
     ...filters.value,
+  })
+}
+
+function onError() {
+  createError({
+    status: 500,
+    message: 'Server error',
   })
 }
 
@@ -30,7 +37,9 @@ const {
   isReseted,
 } = usePagination({
   onUpdate: getApartments,
+  onError,
   pageSize: 10,
+  offset: 5,
 })
 
 const allItems = computed(() => [

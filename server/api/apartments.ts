@@ -5,7 +5,7 @@ import { apartments } from '~/dataBase/db'
 export type ApartmentsResponse = PaginatedResponse<Apartment>
 
 export interface ApartmentsQuery {
-  page?: number
+  offset?: number
   limit?: number
   priceSort?: SortParam
   priceMin?: number
@@ -22,9 +22,8 @@ export default defineEventHandler(async (event) => {
 
   const query = getQuery<ApartmentsQuery>(event)
 
-  const page = Number(query.page) || 1
+  const offset = Number(query.offset) || 0
   const limit = Number(query.limit) || 10
-  const offset = (page - 1) * limit
 
   let results = [...apartments]
 
@@ -80,7 +79,6 @@ export default defineEventHandler(async (event) => {
   const total = results.length
 
   return {
-    page,
     limit,
     total,
     items: paginated,

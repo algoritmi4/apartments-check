@@ -5,46 +5,50 @@ interface PaginationOptions<T> {
   onUpdate: (pageSize: number, pageNumber: number) => Promise<PaginatedResponse<T>>
   onError?: () => void
   pageSize?: number
+  offset?: number
 }
 
 export function usePagination<T>(options: PaginationOptions<T>) {
-  const { onUpdate, onError, pageSize = 10 } = options
+  const { onUpdate, onError, pageSize = 10, offset: off = 0 } = options
 
   const items = ref<T[]>([]) as Ref<T[]>
-  const page = ref(1)
+  const offset = ref(off)
   const isLoading = ref(false)
   const hasMore = ref(true)
   const isReseted = ref(false)
+  const isFetching = ref(false)
 
   async function loadMore() {
-    if (isLoading.value || !hasMore.value)
+    if (isFetching.value || !hasMore.value)
       return
 
-    isLoading.value = true
+    isFetching.value = true
 
     try {
-      const data = await onUpdate(page.value, pageSize)
+      const data = await onUpdate(offset.value, pageSize)
 
       if (data.total <= items.value.length + data.items.length) {
         hasMore.value = false
       }
 
       items.value.push(...(data.items))
-      page.value++
+      offset.value += pageSize
     }
     catch (e) {
       onError?.() ?? console.error(`Error on load more: ${e}`)
     }
     finally {
+      isFetching.value = false
       isLoading.value = false
     }
   }
 
   async function reset() {
     items.value = []
-    page.value = 1
     hasMore.value = true
+    offset.value = 0
     isReseted.value = true
+    isLoading.value = true
 
     loadMore()
   }
@@ -52,10 +56,10 @@ export function usePagination<T>(options: PaginationOptions<T>) {
   return {
     items,
     isLoading,
+    isFetching,
     isReseted,
     hasMore,
     loadMore,
     reset,
-    page,
   }
 }
