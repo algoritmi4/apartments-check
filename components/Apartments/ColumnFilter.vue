@@ -66,7 +66,7 @@ watch(filters.value, () => {
     opacity: var(--hover-opacity-default);
   }
 
-  &:focus {
+  &:focus-visible {
     outline: 2px solid var(--dark-green);
     outline-offset: 2px;
   }
