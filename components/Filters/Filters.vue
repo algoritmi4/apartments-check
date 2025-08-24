@@ -134,6 +134,11 @@ function onResetClick() {
     &:hover {
       opacity: 0.7;
     }
+
+    &-icon {
+      width: 8px;
+      height: 8px;
+    }
   }
 }
 
