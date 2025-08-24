@@ -66,7 +66,7 @@ export default defineEventHandler(async (event) => {
   }
   if (query.squareSort) {
     results = results.sort((a: Apartment, b: Apartment) => {
-      if (query.floorSort === 'abs') {
+      if (query.squareSort === 'abs') {
         return b.square - a.square
       }
       else {
