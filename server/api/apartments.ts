@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
   const limit = Number(query.limit) || 10
   const offset = (page - 1) * limit
 
-  let results = apartments
+  let results = [...apartments]
 
   if (query.priceMin) {
     results = results.filter((item: Apartment) => item.price >= Number(query.priceMin))
