@@ -22,7 +22,7 @@ export function usePagination<T>(options: PaginationOptions<T>) {
     isLoading.value = true
 
     try {
-      const data = await onUpdate(pageSize, page.value)
+      const data = await onUpdate(page.value, pageSize)
 
       if (data.total <= data.items.length) {
         hasMore.value = false
